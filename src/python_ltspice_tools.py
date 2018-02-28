@@ -520,13 +520,4 @@ class raw_values_class:
         given_node_value = given_node.values[return_values[1]]
         return((actual_independent_value,given_node_value))
 #----------------------------------------END Raw Values Class----------------------------------------#}}}
-        
 
-##Read netlist file into the netlist object
-original_filename = "/home/kevin/.wine/drive_c/Program Files/LTC/LTspiceIV/Python_LTSpice_Examples/simple_resistance_circuit.net"
-original_netlist = netlist_class(original_filename)
-raw_values = original_netlist.run_netlist()
-for node, node_value in raw_values.node_values.iteritems():
-    test = .5 #s
-    result = raw_values.find_node_value_at_independet_value(given_independent_value=test,given_node=node_value)
-    print(node,result)
