@@ -5,6 +5,8 @@ import re
 import os
 import sys
 import copy
+import subprocess
+import pkg_resources
 
 #----------------------------------------Remove Path from Name----------------------------------------#{{{1
 def remove_path_from_name(full_filename):
@@ -281,8 +283,10 @@ class netlist_class:
     def run_netlist(self):
         """Runs the given netlist assuming the netlist is in the LTspiveIV directory"""
         self.write_file()
-        command = "run_netlist.sh {}".format(self.wine_filename)
-        os.system(command)
+        resource_package = __name__
+        script_path = pkg_resources.resource_string(resource_package, 'run_netlist.sh')
+        command = "{} {}".format(script_path, self.wine_filename)
+        subprocess.call(command)
         
         #Read in log file and check for errors
         log_filename = self.linux_filename.replace(".net",".log")

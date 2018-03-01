@@ -1,10 +1,10 @@
 #!/usr/bin/python
 ## Simple demo of the python_ltspice_tools
 ## Changes the simple_resistance_circuit.net resistance parameters, and prints the test node result
-from python_ltspice_tools import *
+from pyltspice import *
 
 #Read netlist file into the netlist object
-original_filename = "/home/kevin/.wine/drive_c/Program Files/LTC/LTspiceIV/Python_LTSpice_Examples/simple_resistance_circuit.net"
+original_filename = "simple_resistance_circuit.net"
 original_netlist = netlist_class(original_filename)
 
 #Change the resistance parameters
